@@ -72,4 +72,9 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0,180,0);
     }
 
+    public void setWalkSpeed(float speed)
+    {
+        walkSpeed = speed;
+    }
+
 }
