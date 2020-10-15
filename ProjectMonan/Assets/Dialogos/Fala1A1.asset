@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64328b909d29cc47ad43a32d61e9e73, type: 3}
   m_Name: Fala1A1
   m_EditorClassIdentifier: 
-  fala: Ok, tome cuidado.
-  respostas: []
+  fala: "Oh, voc\xEA n\xE3o sabe!? Bom, eu posso lhe contar um pouco do que est\xE1
+    havendo, mas, voc\xEA est\xE1 com tempo agora?"
+  respostas:
+  - resposta: Sim.
+    proximaFala: {fileID: 11400000, guid: 1dca78821e0057944ad82c5b58c68ab7, type: 2}
+  - resposta: "N\xE3o, vamos deixar para outra oportunidade."
+    proximaFala: {fileID: 11400000, guid: 1dca78821e0057944ad82c5b58c68ab7, type: 2}

@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update(){
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+
+        playerAnimation.SetOnGround(grounded);
     }
 
     private void FixedUpdate(){

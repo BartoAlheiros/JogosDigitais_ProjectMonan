@@ -13,4 +13,8 @@ public class PlayerAnimation : MonoBehaviour
     public void SetSpeed(int speed){
         anim.SetInteger("Speed", speed);
     }
+
+    public void SetOnGround(bool state) {
+        anim.SetBool("OnGround", state);
+    }
 }
