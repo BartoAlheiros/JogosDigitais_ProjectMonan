@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 396342671}
   - component: {fileID: 396342672}
   - component: {fileID: 396342673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495349607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   falas:
   - {fileID: 11400000, guid: 6099510eb7205754eb177ae815ee406e, type: 2}
-  - {fileID: 11400000, guid: 1dca78821e0057944ad82c5b58c68ab7, type: 2}
+  - {fileID: 11400000, guid: 6099510eb7205754eb177ae815ee406e, type: 2}
 --- !u!1 &1504703279
 GameObject:
   m_ObjectHideFlags: 0

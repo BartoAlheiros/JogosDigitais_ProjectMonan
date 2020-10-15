@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update(){
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+
+        playerAnimation.SetOnGround(grounded);
+        
     }
 
     private void FixedUpdate(){
@@ -44,6 +47,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.AddForce(Vector2.up * jumpForce);
         }
+
+        playerAnimation.SetVSpeed(rb.velocity.y);
     }
 
     public void Jump()

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64328b909d29cc47ad43a32d61e9e73, type: 3}
   m_Name: Fala1A
   m_EditorClassIdentifier: 
-  fala: "Ningu\xE9m vem aqui para nada."
+  fala: "Ah, ent\xE3o deve ser voc\xEA, o escolhido para a miss\xE3o! Bem-vindo!!!
+    Oh, o senhor Tup\xE3 escutou minhas rezas!!!!"
   respostas:
-  - resposta: Te juro.
+  - resposta: "Do que voc\xEA est\xE1 falando?"
     proximaFala: {fileID: 11400000, guid: 25241cf8bfdcb814aaa67e3709d9b3fa, type: 2}
