@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fala: O que faz por aqui?
   respostas:
-  - resposta: Nada
+  - resposta: "N\xE3o fa\xE7o ideia."
     proximaFala: {fileID: 11400000, guid: 27e06b660cd388643869adc6977ac926, type: 2}
   - resposta: "S\xF3 estou de passagem."
-    proximaFala: {fileID: 11400000, guid: 25241cf8bfdcb814aaa67e3709d9b3fa, type: 2}
+    proximaFala: {fileID: 11400000, guid: 1dca78821e0057944ad82c5b58c68ab7, type: 2}
   - resposta: Procuro um item raro.
     proximaFala: {fileID: 11400000, guid: 843c490508434f64184903d4658813d1, type: 2}
