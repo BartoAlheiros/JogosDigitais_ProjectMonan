@@ -21,9 +21,12 @@ public class PlayerController : MonoBehaviour
 
     private PlayerAnimation playerAnimation;
 
+    private PlayerInput playerInput;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<PlayerAnimation>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     // Start is called before the first frame update
@@ -42,20 +45,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate(){
         rb.velocity = newMovement;
         
-        if(jump){
-            jump = false;
+        if(grounded && playerInput.jumPressed){
             rb.velocity = Vector2.zero;
             rb.AddForce(Vector2.up * jumpForce);
         }
 
         playerAnimation.SetVSpeed(rb.velocity.y);
-    }
-
-    public void Jump()
-    {
-        if(grounded){
-            jump = true;   
-        }
     }
 
     public void Move(float direction){
