@@ -8,6 +8,7 @@ public class respawn1 : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         player.transform.position = new Vector3(40, 0, 0);
+        player.GetComponent<PlayerHealth>().TakeDamage(10);
     }   
 
 }
