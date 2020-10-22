@@ -44,9 +44,9 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void LoadMenu()
+    public void Reiniciar()
     {
-
+        SceneManager.LoadScene("map1");
     }
 
     public void QuitGame()

@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
 	public int maxHealth = 100;
 	public int currentHealth;
-
+	public GameObject gameOverUi;
 	public HealthBar healthBar;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
-		if(currentHealth > 0)
+		if(currentHealth < 0)
 		{
 			currentHealth = 0;
 		}
@@ -43,4 +43,13 @@ public class PlayerHealth : MonoBehaviour
 		currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
 	}
+
+	void Update()
+    {
+		if(currentHealth == 0)
+        {
+			Time.timeScale = 0f;
+			gameOverUi.SetActive(true);
+		}
+    }
 }
