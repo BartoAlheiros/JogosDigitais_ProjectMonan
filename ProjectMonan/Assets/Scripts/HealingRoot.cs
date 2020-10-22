@@ -25,7 +25,7 @@ public class HealingRoot : MonoBehaviour
 
         if (keySprite.active)
         {
-            if (Input.GetButtonDown("Prompt"))
+            if (Input.GetButton("Prompt"))
             {
                 if (HealthPool > 0)
                 {
