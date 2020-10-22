@@ -21,4 +21,8 @@ public class PlayerAnimation : MonoBehaviour
     public void SetOnGround(bool state) {
         anim.SetBool("OnGround", state);
     }
+
+    public void SetOnAttack(bool state) {
+        anim.SetBool("OnAttack", state);
+    }
 }
