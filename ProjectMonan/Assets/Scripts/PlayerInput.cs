@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
 
     public bool jumPressed;
 
+    public bool attackPressed = false;
+
     public bool clearJump;
 
     // Start is called before the first frame update
@@ -21,7 +23,7 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         
-     if (clearJump) 
+        if (clearJump) 
         {
             jumPressed = false;
         }
@@ -29,6 +31,9 @@ public class PlayerInput : MonoBehaviour
         clearJump = false;
 
         jumPressed = jumPressed || Input.GetButtonDown("Jump");
+
+        attackPressed = Input.GetMouseButton(0);
+        
     }
 
     private void FixedUpdate()
