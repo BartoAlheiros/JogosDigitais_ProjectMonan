@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(grounded && playerInput.attackPressed) {
+        if(playerInput.attackPressed) {
             playerAnimation.SetOnAttack(true);
         }
 
