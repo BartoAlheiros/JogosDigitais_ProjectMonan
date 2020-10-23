@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool facingRight = true;
     private bool jump;
     private bool doubleJump;
-    private float jumpForce = 550;
+    private float jumpForce = 600;
 
     private PlayerAnimation playerAnimation;
 
