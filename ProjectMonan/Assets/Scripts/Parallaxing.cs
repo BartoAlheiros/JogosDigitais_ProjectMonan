@@ -15,6 +15,7 @@ public class Parallaxing : MonoBehaviour {
 	}
 
 	void Start () {
+		Time.timeScale = 1f;
 		previousCamPos = cam.position;
 
 		parallaxScales = new float[backgrounds.Length];
