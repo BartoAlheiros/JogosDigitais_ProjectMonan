@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private bool facingRight = true;
     private bool jump;
+    private bool doubleJump;
     private float jumpForce = 550;
 
     private PlayerAnimation playerAnimation;
@@ -45,6 +46,9 @@ public class PlayerController : MonoBehaviour
     void Update(){
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
 
+        if (grounded)
+            doubleJump = false;
+
         playerAnimation.SetOnGround(grounded);
         
     }
@@ -55,9 +59,13 @@ public class PlayerController : MonoBehaviour
         
         rb.velocity = newMovement;
     
-        if(grounded && playerInput.jumPressed){
-            rb.velocity = Vector2.zero;
-            rb.AddForce(Vector2.up * jumpForce);
+        if(playerInput.jumPressed){
+            if(!doubleJump || grounded){
+                rb.velocity = Vector2.zero;
+                rb.AddForce(Vector2.up * jumpForce);
+
+                doubleJump = true;
+            }
         }
 
         if(grounded && playerInput.attackPressed) {
