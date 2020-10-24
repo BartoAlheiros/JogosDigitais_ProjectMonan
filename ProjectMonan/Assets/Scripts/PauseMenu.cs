@@ -46,8 +46,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Reiniciar()
     {
+<<<<<<< HEAD
         Time.timeScale = 1f;
         SceneManager.LoadScene("map1");   
+=======
+        SceneManager.LoadScene("map1");
+>>>>>>> Bartô
     }
 
     public void QuitGame()
