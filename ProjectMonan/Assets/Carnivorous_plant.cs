@@ -10,16 +10,21 @@ public class Carnivorous_plant : MonoBehaviour
     public float nextAttack;
     private Transform player;
     private bool onAttack;
+    public int damage;
 
 
     private Rigidbody2D rb;
     private Animator anim;
+    public PlayerHealth player_health;
+
+    float distance;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
+        player_health = player.GetComponent<PlayerHealth>();
     }
     // Start is called before the first frame update
     void Start()
@@ -35,7 +40,7 @@ public class Carnivorous_plant : MonoBehaviour
 
     void CheckTarget()
     {
-        float distance = Vector2.Distance(transform.position, player.position);
+        distance = Vector2.Distance(transform.position, player.position);
         /*Calcula a direção. Se o resultado for positivo, o Player está à direita
         Se for negativo, o Player está à esquerda.*/
         float dir = player.transform.position.x - transform.position.x;
@@ -67,5 +72,13 @@ public class Carnivorous_plant : MonoBehaviour
         }else {
             onAttack = false;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(distance <= attackDistance) 
+        {
+            player_health.TakeDamage(damage);
+        }
+                
     }
 }
