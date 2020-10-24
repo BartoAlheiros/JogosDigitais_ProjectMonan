@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
 
         jumPressed = jumPressed || Input.GetButtonDown("Jump");
 
-        attackPressed = Input.GetMouseButton(0);
+        attackPressed = Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.K);
         
     }
 
