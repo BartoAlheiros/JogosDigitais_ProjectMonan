@@ -11,11 +11,13 @@ public class Carnivorous_plant : MonoBehaviour
     private Transform player;
     private bool onAttack;
     public int damage;
+    public int health;
 
 
     private Rigidbody2D rb;
     private Animator anim;
     public PlayerHealth player_health;
+    public SpriteRenderer sprite;
 
     float distance;
 
@@ -25,6 +27,7 @@ public class Carnivorous_plant : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
         player_health = player.GetComponent<PlayerHealth>();
+        sprite = GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()
@@ -74,11 +77,31 @@ public class Carnivorous_plant : MonoBehaviour
         }
     }
 
+    private void Attack() {
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if(distance <= attackDistance) 
         {
             player_health.TakeDamage(damage);
         }
                 
+    }
+
+    public void DamagePlant(int damage) {
+        if(health < 1)
+            return;
+        StartCoroutine (Damage ());    
+        health -= damage;
+    }
+
+    /* corrotina pra pintar o sprite do inimigo de vermelho,
+    sinalizando que ele está sendo atingido pelo Player.*/
+    IEnumerator Damage() {
+        Color vermelho = new Color32(207, 40, 40, 255);
+        sprite.color = vermelho;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
     }
 }
