@@ -19,6 +19,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-7814471596583733477
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 5a20778e1f5b7ab40ac0d5c4614e795c
+  m_EffectName: Attenuation
+  m_MixLevel: 19bb0d5f9c3f52148bef4a919d5f721f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-6429461703622558016
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -34,6 +48,25 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -109681297494496327}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &-2946248162282106717
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFXPlayer
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 791b9227e2cccbc4489c3bdbe240a578
+  m_Children: []
+  m_Volume: 2003fd47536b7d047af464e9d1d1167c
+  m_Pitch: e40ca8b5030c67d4a969e574c3838ef2
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -7814471596583733477}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -74,11 +107,14 @@ AudioMixerController:
     name: MusicVol
   - guid: 2349de72bcab57f429fb0c0b4efdd79d
     name: SFXVol
+  - guid: 2003fd47536b7d047af464e9d1d1167c
+    name: SFXPlayerVol
   m_AudioMixerGroupViews:
   - guids:
     - 0592d74579e216c41b28dee0c4c8f47b
     - 01aafd9d1341d2c4382cf974ed916be9
     - d4888770783c2ba47b5db8106ba54042
+    - 791b9227e2cccbc4489c3bdbe240a578
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -94,6 +130,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -8198848044337737108}
   - {fileID: -6429461703622558016}
+  - {fileID: -2946248162282106717}
   m_Volume: b9df1f1f3962cf34ea1ba072b9f4d99b
   m_Pitch: d8198c205f5551a498b8ea3461a5ef6a
   m_Send: 00000000000000000000000000000000
@@ -126,7 +163,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: c4c1636ed503c7a47b1266db42fab8f4
-  m_FloatValues: {}
+  m_FloatValues:
+    2003fd47536b7d047af464e9d1d1167c: -7.8940816
   m_TransitionOverrides: {}
 --- !u!244 &4575735761933242320
 AudioMixerEffectController:
