@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     public Transform groundCheck;
     public float groundRadius = 0.1f;
     public LayerMask groundLayer;
@@ -26,6 +27,10 @@ public class PlayerController : MonoBehaviour
     private bool doubleJump;
     private float jumpForce = 600;
 
+    public AudioClip jumpSFX;
+
+    private AudioManager audioManager;
+
     private PlayerAnimation playerAnimation;
 
     private PlayerInput playerInput;
@@ -35,6 +40,7 @@ public class PlayerController : MonoBehaviour
         playerAnimation = GetComponent<PlayerAnimation>();
         playerInput = GetComponent<PlayerInput>();
         transform = GetComponent<Transform>();
+        audioManager = GetComponent<AudioManager>();
     }
 
     // Start is called before the first frame update
@@ -53,7 +59,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void FixedUpdate(){
+    private void FixedUpdate(){      
         
         playerAnimation.SetOnAttack(false);
         
@@ -61,6 +67,7 @@ public class PlayerController : MonoBehaviour
     
         if(playerInput.jumPressed){
             if(!doubleJump || grounded){
+                audioManager.PlayAudio(jumpSFX);
                 rb.velocity = Vector2.zero;
                 rb.AddForce(Vector2.up * jumpForce);
 
