@@ -35,12 +35,15 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    private PlayerHealth health;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<PlayerAnimation>();
         playerInput = GetComponent<PlayerInput>();
         transform = GetComponent<Transform>();
         audioManager = GetComponent<AudioManager>();
+        health = GetComponent<PlayerHealth>();
     }
 
     // Start is called before the first frame update
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
         
         rb.velocity = newMovement;
     
-        if(playerInput.jumPressed){
+        if(playerInput.jumPressed && health.currentHealth > 1){
             if(!doubleJump || grounded){
                 audioManager.PlayAudio(jumpSFX);
                 rb.velocity = Vector2.zero;
@@ -76,7 +79,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(playerInput.attackPressed) {
+        if(playerInput.attackPressed && health.currentHealth > 1) {
             playerAnimation.SetOnAttack(true);
         }
 

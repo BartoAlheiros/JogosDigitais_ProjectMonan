@@ -12,8 +12,11 @@ public class PlayerHealth : MonoBehaviour
 
 	public PlayerAnimation anim;
 
+	public PlayerInput input;
+
 	private void Awake() {
 		anim = GetComponent<PlayerAnimation>();
+		input = GetComponent<PlayerInput>();
 	}
 
     // Start is called before the first frame update
@@ -52,16 +55,21 @@ public class PlayerHealth : MonoBehaviour
 
 	void Update()
     {
-		if(currentHealth == 0)
-        {
-			StartCoroutine(Die());
-			//Time.timeScale = 0f;
-			gameOverUi.SetActive(true);
-		}
+		IsDying();
     }
 
-	IEnumerator Die() {
+	public void IsDying() {
+		if(currentHealth < 1){
+			StartCoroutine(Dying());
+		}
+		
+	}
+
+	IEnumerator Dying() {
+		input.enabled = false;
 		anim.Die();
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(3);
+		Time.timeScale = 0f;
+		gameOverUi.SetActive(true);
 	}
 }
