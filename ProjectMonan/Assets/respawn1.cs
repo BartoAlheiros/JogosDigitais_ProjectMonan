@@ -18,6 +18,7 @@ public class respawn1 : MonoBehaviour {
             return;
         } else if(health.currentHealth >= 2*damage){
             player.transform.position = new Vector3(40, 0, 0);
+            
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
         } else {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);

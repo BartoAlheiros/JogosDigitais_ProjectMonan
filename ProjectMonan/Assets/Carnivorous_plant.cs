@@ -75,18 +75,22 @@ public class Carnivorous_plant : MonoBehaviour
 
     /* Causa dano no Player */
     private void OnTriggerEnter2D(Collider2D other) {
-        if(distance <= attackDistance) 
-        {
-            player_health.TakeDamage(damage);
-        }
-                
+       if (player_health.currentHealth < 1)
+       {
+           return;
+       } else {
+            if(distance <= attackDistance) 
+            {
+                player_health.TakeDamage(damage);
+            }
+       }         
     }
 
     /* Para a Planta sofrer dano */
     public void DamagePlant(int damage) {
         // morte
         if(health < 1)
-            Destroy(gameObject);
+            Die();
 
         StartCoroutine (Damage ());    
         health -= damage;
@@ -101,7 +105,7 @@ public class Carnivorous_plant : MonoBehaviour
         sprite.color = Color.white;
     }
 
-    public void Dead() {
-
+    public void Die() {
+        Destroy(gameObject);
     }
 }

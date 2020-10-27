@@ -10,13 +10,18 @@ public class PlayerHealth : MonoBehaviour
 	public GameObject gameOverUi;
 	public HealthBar healthBar;
 
-	public PlayerAnimation anim;
+	private PlayerAnimation anim;
 
-	public PlayerInput input;
+	private PlayerInput input;
+
+	private AudioManager audioManager;
+
+	public AudioClip deathSfx;
 
 	private void Awake() {
 		anim = GetComponent<PlayerAnimation>();
 		input = GetComponent<PlayerInput>();
+		audioManager = GetComponent<AudioManager>();
 	}
 
     // Start is called before the first frame update
@@ -29,11 +34,14 @@ public class PlayerHealth : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
-		if(currentHealth < 0)
+		if(currentHealth < 1)
 		{
-			currentHealth = 0;
+			healthBar.SetHealth(currentHealth);
+			Die();
+		} else {
+			healthBar.SetHealth(currentHealth);
 		}
-		healthBar.SetHealth(currentHealth);
+		
 	}
 
 	public void Heal(int amount)
@@ -55,18 +63,16 @@ public class PlayerHealth : MonoBehaviour
 
 	void Update()
     {
-		IsDying();
+		
     }
 
-	public void IsDying() {
-		if(currentHealth < 1){
-			StartCoroutine(Dying());
-		}
-		
+	public void Die() {
+		StartCoroutine(DieAux());
 	}
 
-	IEnumerator Dying() {
+	IEnumerator DieAux() {
 		input.enabled = false;
+		audioManager.PlayAudio(deathSfx);
 		anim.Die();
 		yield return new WaitForSeconds(3);
 		Time.timeScale = 0f;
