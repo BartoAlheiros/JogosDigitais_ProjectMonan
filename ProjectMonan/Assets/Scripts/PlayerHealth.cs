@@ -10,6 +10,12 @@ public class PlayerHealth : MonoBehaviour
 	public GameObject gameOverUi;
 	public HealthBar healthBar;
 
+	public PlayerAnimation anim;
+
+	private void Awake() {
+		anim = GetComponent<PlayerAnimation>();
+	}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +54,14 @@ public class PlayerHealth : MonoBehaviour
     {
 		if(currentHealth == 0)
         {
-			Time.timeScale = 0f;
+			StartCoroutine(Die());
+			//Time.timeScale = 0f;
 			gameOverUi.SetActive(true);
 		}
     }
+
+	IEnumerator Die() {
+		anim.Die();
+		yield return new WaitForSeconds(10);
+	}
 }

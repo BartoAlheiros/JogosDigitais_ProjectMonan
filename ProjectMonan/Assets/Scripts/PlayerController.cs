@@ -49,14 +49,15 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update() {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
 
         if (grounded)
             doubleJump = false;
 
         playerAnimation.SetOnGround(grounded);
-        
+
+                
     }
 
     private void FixedUpdate(){      
@@ -82,7 +83,6 @@ public class PlayerController : MonoBehaviour
         playerAnimation.SetVSpeed(rb.velocity.y);
 
     }
-
     public void Move(float direction){
         float currentSpeed = walkSpeed;
         newMovement = new Vector2(direction*currentSpeed, rb.velocity.y);

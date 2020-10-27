@@ -15,7 +15,7 @@ public class Carnivorous_plant : MonoBehaviour
 
 
     private Rigidbody2D rb;
-    private Animator anim;
+    private Carnivorous_plant_animation anim;
     public PlayerHealth player_health;
     public SpriteRenderer sprite;
 
@@ -25,9 +25,9 @@ public class Carnivorous_plant : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        anim = GetComponent<Animator>();
         player_health = player.GetComponent<PlayerHealth>();
         sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Carnivorous_plant_animation>();
     }
     // Start is called before the first frame update
     void Start()
@@ -56,8 +56,7 @@ public class Carnivorous_plant : MonoBehaviour
                 if(Time.time > nextAttack)
                 {
                     nextAttack = Time.time + attackRate;
-                    onAttack = true;
-                    anim.SetTrigger("AttackLeft");
+                    anim.AttackLeft();
                 }
                 
 
@@ -66,21 +65,15 @@ public class Carnivorous_plant : MonoBehaviour
                 if(Time.time > nextAttack)
                 {
                     nextAttack = Time.time + attackRate;
-                    onAttack = true;
-                    anim.SetTrigger("AttackRight");
+                    anim.AttackRight();
                 }
          
             }
 
-        }else {
-            onAttack = false;
         }
     }
 
-    private void Attack() {
-        
-    }
-
+    /* Causa dano no Player */
     private void OnTriggerEnter2D(Collider2D other) {
         if(distance <= attackDistance) 
         {
@@ -89,9 +82,12 @@ public class Carnivorous_plant : MonoBehaviour
                 
     }
 
+    /* Para a Planta sofrer dano */
     public void DamagePlant(int damage) {
+        // morte
         if(health < 1)
-            return;
+            Destroy(gameObject);
+
         StartCoroutine (Damage ());    
         health -= damage;
     }
@@ -103,5 +99,9 @@ public class Carnivorous_plant : MonoBehaviour
         sprite.color = vermelho;
         yield return new WaitForSeconds(0.1f);
         sprite.color = Color.white;
+    }
+
+    public void Dead() {
+
     }
 }

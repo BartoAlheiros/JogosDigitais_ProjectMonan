@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hatchet : MonoBehaviour
 {
     public int damage;
-    public Carnivorous_plant plant;
+    private Carnivorous_plant plant;
 
     private void Awake() {
         

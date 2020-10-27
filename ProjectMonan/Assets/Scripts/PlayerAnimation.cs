@@ -25,4 +25,8 @@ public class PlayerAnimation : MonoBehaviour
     public void SetOnAttack(bool state) {
         anim.SetBool("OnAttack", state);
     }
+
+    public void Die() {
+        anim.SetTrigger("isDead");
+    }
 }
