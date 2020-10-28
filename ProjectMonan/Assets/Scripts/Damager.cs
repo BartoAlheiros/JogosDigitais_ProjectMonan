@@ -4,15 +4,39 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
-    public int power = 1;
+    public GameObject player;
+    private PlayerHealth health;
+    private int damage = 5;
+    private bool isOnTrigger = false;
+
+    private void Awake()
+    {
+        health = player.GetComponent<PlayerHealth>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Damageable damageable = other.GetComponent<Damageable>();
-
-        if(damageable != null){
-            damageable.TakeDamage(power, transform.position.x);
+        isOnTrigger = true;
+        if (health.currentHealth >= 2 * damage)
+        {
+            player.GetComponent<PlayerHealth>().TakeDamage(damage, false);
         }
+        else
+        {
+            player.GetComponent<PlayerHealth>().TakeDamage(damage, false);
+        }
+    }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        isOnTrigger = false;
+    }
+
+
+    void Update()
+    {
+        if (isOnTrigger == true)
+        {
+        }
     }
 
 }
