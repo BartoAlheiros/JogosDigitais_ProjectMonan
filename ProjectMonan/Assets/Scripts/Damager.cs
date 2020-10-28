@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     private PlayerHealth health;
     private int damage = 5;
     private bool isOnTrigger = false;
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         health = player.GetComponent<PlayerHealth>();
     }
 
