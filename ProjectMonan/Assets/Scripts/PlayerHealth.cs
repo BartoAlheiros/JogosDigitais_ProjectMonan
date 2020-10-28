@@ -38,23 +38,25 @@ public class PlayerHealth : MonoBehaviour
 
 	public void TakeDamage(int damage, bool isEnemy)
 	{
-		int painSfx = Random.Range(0,2);
+		int painSfx = Random.Range(0,10);
+		painSfx = painSfx%3;
 		
 		if(currentHealth < 2*damage)
 		{
 			currentHealth -= damage;
 			healthBar.SetHealth(currentHealth);
 			Die();
-		} else if(isEnemy && painSfx == 1) 
+		} else if(isEnemy && painSfx != 0) 
 		{
 			audioManager.PlayAudio(hitSfx);
 			currentHealth -= damage;
 			healthBar.SetHealth(currentHealth);
 				
-		} else if(isEnemy && painSfx == 0) {
+		} else if(isEnemy && painSfx == 0) 
+		{
 			currentHealth -= damage;
 			healthBar.SetHealth(currentHealth);
-		} else {
+		} else if(!isEnemy) {
 			audioManager.PlayAudio(hitSfx);
 			currentHealth -= damage;
 			healthBar.SetHealth(currentHealth);
