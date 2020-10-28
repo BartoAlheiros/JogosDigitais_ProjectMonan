@@ -18,10 +18,15 @@ public class PlayerHealth : MonoBehaviour
 
 	public AudioClip deathSfx;
 
+	public AudioClip hitSfx;
+
+	private SpriteRenderer sprite;
+
 	private void Awake() {
 		anim = GetComponent<PlayerAnimation>();
 		input = GetComponent<PlayerInput>();
 		audioManager = GetComponent<AudioManager>();
+		sprite = GetComponent<SpriteRenderer>();
 	}
 
     // Start is called before the first frame update
@@ -31,18 +36,40 @@ public class PlayerHealth : MonoBehaviour
 		healthBar.SetMaxHealth(maxHealth);
     }
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, bool isEnemy)
 	{
-		currentHealth -= damage;
-		if(currentHealth < 1)
+		int painSfx = Random.Range(0,2);
+		
+		if(currentHealth < 2*damage)
 		{
+			currentHealth -= damage;
 			healthBar.SetHealth(currentHealth);
 			Die();
+		} else if(isEnemy && painSfx == 1) 
+		{
+			audioManager.PlayAudio(hitSfx);
+			currentHealth -= damage;
+			healthBar.SetHealth(currentHealth);
+				
+		} else if(isEnemy && painSfx == 0) {
+			currentHealth -= damage;
+			healthBar.SetHealth(currentHealth);
 		} else {
+			audioManager.PlayAudio(hitSfx);
+			currentHealth -= damage;
 			healthBar.SetHealth(currentHealth);
 		}
 		
 	}
+
+	   /* corrotina pra pintar o sprite do inimigo de vermelho,
+    sinalizando que ele está sendo atingido pelo Player.*/
+    IEnumerator Damage() {
+        Color vermelho = new Color32(207, 40, 40, 255);
+        sprite.color = vermelho;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }
 
 	public void Heal(int amount)
 	{

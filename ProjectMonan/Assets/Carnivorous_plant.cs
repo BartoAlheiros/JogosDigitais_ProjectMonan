@@ -81,7 +81,7 @@ public class Carnivorous_plant : MonoBehaviour
        } else {
             if(distance <= attackDistance) 
             {
-                player_health.TakeDamage(damage);
+                player_health.TakeDamage(damage, true);
             }
        }         
     }
