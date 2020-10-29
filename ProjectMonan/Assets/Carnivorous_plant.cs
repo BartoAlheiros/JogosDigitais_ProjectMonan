@@ -39,6 +39,10 @@ public class Carnivorous_plant : MonoBehaviour
     void Update()
     {
         CheckTarget();
+          
+        // morte
+        if(health < 1)
+            Die();
     }
 
     void CheckTarget()
@@ -88,10 +92,6 @@ public class Carnivorous_plant : MonoBehaviour
 
     /* Para a Planta sofrer dano */
     public void DamagePlant(int damage) {
-        // morte
-        if(health < 1)
-            Die();
-
         StartCoroutine (Damage ());    
         health -= damage;
     }
